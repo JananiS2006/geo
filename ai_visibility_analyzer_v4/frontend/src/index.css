@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-canvas text-ink font-sans; }
+  :focus-visible { @apply outline-none ring-2 ring-brand/60 ring-offset-2 ring-offset-white rounded-md; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+}
+
+@layer components {
+  .wash { background: radial-gradient(900px 420px at 85% -10%, #DDF4FA 0%, transparent 60%), radial-gradient(700px 380px at -10% 10%, #EEEEFD 0%, transparent 55%); }
+  .panel { @apply bg-white border border-line rounded-2xl shadow-card; }
+  .field { @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10 transition; }
+  .label { @apply block text-sm font-semibold text-ink mb-1.5; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn text-white bg-gradient-to-r from-brand to-violet hover:brightness-110 shadow-[0_8px_20px_-8px_rgba(84,88,232,.6)]; }
+  .btn-ghost { @apply btn text-ink-soft hover:text-ink hover:bg-white border border-line bg-white/70; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .tnum { font-variant-numeric: tabular-nums; }
+}
+
+/* Markdown article */
+.prose-article h1 { @apply text-3xl font-extrabold tracking-tight mb-4 leading-tight; }
+.prose-article h2 { @apply text-xl font-bold mt-8 mb-2; }
+.prose-article h3 { @apply text-base font-bold mt-5 mb-1; }
+.prose-article p { @apply text-[15px] leading-7 text-ink-soft mb-3 max-w-[68ch]; }
+.prose-article ul { @apply list-disc pl-5 mb-3 text-[15px] leading-7 text-ink-soft; }
+.prose-article strong { @apply text-ink; }
+.prose-article table { @apply w-full text-sm my-4 border-collapse; }
+.prose-article th { @apply text-left font-semibold bg-canvas border border-line px-3 py-2; }
+.prose-article td { @apply border border-line px-3 py-2 text-ink-soft; }
+
+@media print {
+  nav, .no-print { display: none !important; }
+  body { background: white; }
+  .panel { box-shadow: none; break-inside: avoid; }
+}
+.prose-article ol { @apply list-decimal pl-5 mb-3 text-[15px] leading-7 text-ink-soft; }
+.prose-article li > p { @apply mb-1; }

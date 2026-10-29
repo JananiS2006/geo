@@ -1,0 +1,6 @@
+# Never upload local secrets or environments to Vercel.
+# Set API keys in Vercel: Project > Settings > Environment Variables.
+.env
+.venv/
+__pycache__/
+*.pyc
